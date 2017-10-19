@@ -19,7 +19,7 @@ df=df.na.drop()
 // val cat_columns=Array("BldgType","BsmtCond", "BsmtQual", "BsmtExposure", "CentralAir", "ExterQual", "ExterCond", "GarageType", "GarageFinish","Foundation","Heating", "HeatingQC","LotShape","LandContour","SaleCondition")
 // val numeric_columns=Array("GarageArea", "YearRemodAdd", "BedroomAbvGr", "GrLivArea", "YearBuilt", "TotRmsAbvGrd", "OverallQual", "MSSubClass","TotalBsmtSF")
 val cat_columns=Array("baobflag","federalgovernmentflag","firm8aflag","educationalinstitutionflag","aiobflag","apaobflag","gfe_gfp","hubzoneflag")
-val numeric_columns=Array("dollarsobligated")
+// val numeric_columns=Array("dollarsobligated")
 
 val buf = scala.collection.mutable.ArrayBuffer.empty[org.apache.spark.ml.PipelineStage]
 
@@ -33,7 +33,7 @@ buf+=encode
 
 // val columns=cat_columns.map(i=>i+"__index")
 val columns=cat_columns.map(i=>i+"__encode")
-val vec=new VectorAssembler().setInputCols(columns++numeric_columns).setOutputCol("features")
+val vec=new VectorAssembler().setInputCols(columns).setOutputCol("features")
 // val vec=new VectorAssembler().setInputCols(columns++numeric_columns).setOutputCol("features_1")
 // val featureIndexer = new VectorIndexer()
 // .setInputCol("features_1")
